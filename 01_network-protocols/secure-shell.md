@@ -47,14 +47,13 @@ Since we have already created a config file for SSH it should suggest your confi
 
 SSH keys are used for secure authentication when accessing remote systems, such as servers or cloud environments, without the need for passwords.
 
-[!NOTE]
-**Authentication: "Who are you?"**
-Authentication is the process of verifying the identity of a user, device, or system. It ensures that the entity requesting access is genuinely who they claim to be.
-Examples: Username and password, ssh keys
+> [!NOTE] > **Authentication: "Who are you?"**
+> Authentication is the process of verifying the identity of a user, device, or system. It ensures that the entity requesting access is genuinely who they claim to be.
+> Examples: Username and password, ssh keys
 
-**Authorization: "What can you do?"**
-Authorization comes after authentication and defines what an authenticated user or system is allowed to do or access. It determines permissions for different actions and resources within the system.
-Examples: User can be assigned permissions through Role-based Access Control (RBAC), OAuth (token based autorization method)
+> [!NOTE] > **Authorization: "What can you do?"**
+> Authorization comes after authentication and defines what an authenticated user or system is allowed to do or access. It determines permissions for different actions and resources within the system.
+> Examples: User can be assigned permissions through Role-based Access Control (RBAC), OAuth (token based autorization method)
 
 Follow the instructions on https://cloud.google.com/compute/docs/connect/create-ssh-keys#create_an_ssh_key_pair:
 
