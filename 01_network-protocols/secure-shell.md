@@ -47,11 +47,13 @@ Since we have already created a config file for SSH it should suggest your confi
 
 SSH keys are used for secure authentication when accessing remote systems, such as servers or cloud environments, without the need for passwords.
 
-> [!NOTE] > **Authentication: "Who are you?"**
+> [!NOTE] **Authentication: "Who are you?"**
+>
 > Authentication is the process of verifying the identity of a user, device, or system. It ensures that the entity requesting access is genuinely who they claim to be.
 > Examples: Username and password, ssh keys
 
-> [!NOTE] > **Authorization: "What can you do?"**
+> [!NOTE] **Authorization: "What can you do?"**
+>
 > Authorization comes after authentication and defines what an authenticated user or system is allowed to do or access. It determines permissions for different actions and resources within the system.
 > Examples: User can be assigned permissions through Role-based Access Control (RBAC), OAuth (token based autorization method)
 
@@ -64,8 +66,8 @@ ssh-keygen -t rsa -f ~/.ssh/<KEY_FILENAME> -C <USERNAME>
 - `KEY_FILENAME` the file name for the generated ssh keys. The private key will be saved under ~/.ssh/KEY_FILENAME and the public key under ~/.ssh/KEY_FILENAME.pub
 - `USERNAME` the user name on the virtual machine
 
-[!NOTE]
-You will be asked to define a passphrase. You can but you do not have to.
+> [!NOTE]
+> You will be asked to define a passphrase. You can but you do not have to.
 
 ```sh
 # Output
@@ -89,8 +91,9 @@ You can use an ssh configuration in order to speed up connecting to your remote 
 
 Create a file called `config` inisde `~/.ssh/` folder:
 
-[!IMPORTANT]
-If you already have a `~/.ssh/config` file but you want to add another configuration then put both configs into separated config files like `~/.ssh/config-1/config` and `~/.ssh/config-2/config` and use the `Include` directive inside `~/.ssh/config` in oder to reference a specific config like `Include ~/.ssh/config-2/config`.
+> [!TIP]
+>
+> If you already have a `~/.ssh/config` file but you want to add another configuration then put both configs into separated config files like `~/.ssh/config-1/config` and `~/.ssh/config-2/config` and use the `Include` directive inside `~/.ssh/config` in oder to reference a specific config like `Include ~/.ssh/config-2/config`.
 
 Or you specify the `-F` flag like `ssh -F /path/to/your/custom_config username@hostname`.
 

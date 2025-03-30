@@ -36,8 +36,8 @@ Now copy the public key and go to `GCP -> Compute Engine -> Metadaten` and klick
 
 After you have created the VM instance in the previous section, it takes some time for GCP to finish the process of creating the VM.
 
-[!NOTE]
-You can [connect to your remote server using VSCode](../01_network-protocols/secure-shell.md#How-to-connect-to-a-remote-server-using-VSCode).
+> [!TIP]
+> You can [connect to your remote server using VSCode](../01_network-protocols/secure-shell.md#How-to-connect-to-a-remote-server-using-VSCode).
 
 Afterwards copy the `external IP` and go to your terminal and use the following command in order to connect to your VM.
 
@@ -45,9 +45,9 @@ Afterwards copy the `external IP` and go to your terminal and use the following 
 ssh -i <PATH_TO_PRIVATE_SSH_KEY> <VM_USER_NAME>@<EXTERNAL_IP>
 ```
 
-![NOTE]
-Read more about it [here](../01_network-protocols/secure-shell.md#-Authenticate-using-SSH-keys).
-You can use a ssh-config file in order to speed up the authentication to your VM.
+> [!TIP]
+> Read more about it [here](../01_network-protocols/secure-shell.md#-Authenticate-using-SSH-keys).
+> You can use a ssh-config file in order to speed up the authentication to your VM.
 
 After connecting to your VM successfully check the number of cores and memory using `htop`.
 
@@ -91,7 +91,7 @@ Go to "3 dots" and click on "Create new service account".
 
 3. Skip
 
-[!Note] In a real life project you will / should not asign admin permissions.
+> [!CAUTION] In a real life project you will / should not asign admin permissions.
 
 **Define further roles**
 

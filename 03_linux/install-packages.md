@@ -53,8 +53,8 @@ sudo service docker restart
 
 ## Install docker-compose
 
-[!NOTE]
-Before installing docker-compose create a `~/bin` directory where you put in your executable files.
+> [!TIP]
+> Before installing docker-compose create a `~/bin` directory where you put in your executable files.
 
 ```bash
 # Get download path from github
