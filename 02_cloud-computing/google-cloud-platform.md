@@ -91,7 +91,8 @@ Go to "3 dots" and click on "Create new service account".
 
 3. Skip
 
-> [!CAUTION] In a real life project you will / should not asign admin permissions.
+> [!CAUTION]
+> In a real life project you will / should not asign admin permissions.
 
 **Define further roles**
 

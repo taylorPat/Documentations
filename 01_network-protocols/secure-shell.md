@@ -52,8 +52,8 @@ SSH keys are used for secure authentication when accessing remote systems, such 
 > Authentication is the process of verifying the identity of a user, device, or system. It ensures that the entity requesting access is genuinely who they claim to be.
 > Examples: Username and password, ssh keys
 
-> [!NOTE] **Authorization: "What can you do?"**
->
+> [!NOTE]  
+>  **Authorization: "What can you do?"**  
 > Authorization comes after authentication and defines what an authenticated user or system is allowed to do or access. It determines permissions for different actions and resources within the system.
 > Examples: User can be assigned permissions through Role-based Access Control (RBAC), OAuth (token based autorization method)
 
@@ -98,6 +98,7 @@ Create a file called `config` inisde `~/.ssh/` folder:
 Or you specify the `-F` flag like `ssh -F /path/to/your/custom_config username@hostname`.
 
 ```bash
+# ~/.ssh/config
 Host <ALIAS>
 HostName <EXTERNAL_ID>
 USER <USER_NAME>
@@ -135,15 +136,15 @@ ssh -R <remote-port>:<local-host>:<local-port> username@remote-server
 
 **Enable Port forwarding on SSH server**
 
-For remote port forwarding to work, you must ensure that the remote SSH server allows remote port forwarding. The server’s SSH configuration file (/etc/ssh/sshd_config) must have the following setting enabled:
+For remote port forwarding to work, you must ensure that the remote SSH server allows remote port forwarding. The server’s SSH configuration file (`/etc/ssh/sshd_config`) must have the following setting enabled:
 
 ```bash
 GatewayPorts yes
 ```
 
-This allows the server to accept remote port forwarding. If it’s not enabled, you can modify the server’s sshd_config file and restart the SSH service.
+This allows the server to accept remote port forwarding. If it’s not enabled, you can modify the server’s `sshd_config` file and restart the SSH service.
 
-Edit the /etc/ssh/sshd_config file on the remote server.
+Edit the `/etc/ssh/sshd_config` file on the remote server.
 
 Find and update (or add) the line:
 
@@ -157,7 +158,7 @@ Restart the SSH service on the remote server:
 sudo systemctl restart sshd
 ```
 
-## File transfer over SSH with SFTP
+# File transfer over SSH with SFTP
 
 SFTP (Secure File Transfer Protocol) is a protocol used to securely transfer files between a local machine and a remote server or between two remote servers. SFTP is built on top of SSH, so it uses the same encrypted connection as SSH to ensure that file transfers are secure.
 
