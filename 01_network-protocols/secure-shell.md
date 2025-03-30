@@ -47,8 +47,8 @@ Since we have already created a config file for SSH it should suggest your confi
 
 SSH keys are used for secure authentication when accessing remote systems, such as servers or cloud environments, without the need for passwords.
 
-> [!NOTE] **Authentication: "Who are you?"**
->
+> [!NOTE]  
+> **Authentication: "Who are you?"**  
 > Authentication is the process of verifying the identity of a user, device, or system. It ensures that the entity requesting access is genuinely who they claim to be.
 > Examples: Username and password, ssh keys
 
