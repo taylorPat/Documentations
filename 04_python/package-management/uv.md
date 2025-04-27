@@ -49,22 +49,44 @@ uv init --app
 # pyproject.toml, main.py and .python-version was created
 # Check the folder structure
 tree .
+```
 
-# run the main.py
+uv will create a persistent virtual environment called _.venv_ with the project and its dependencies.
+If you pulled the repo and there is not yet a virtual environment you can use `uv run ...` to create the project environment **implicitly**. Or you can also use this command if you want to check if your environemnt is up-to-date. By using `uv run` locking and syncing is automatically applied before requesting the command. This ensures the environment is always up-to-date.
+
+See: https://docs.astral.sh/uv/concepts/projects/layout/#the-project-environment
+
+You can also do this **explicitly** by running `uv sync`.
+
+> [!INFO]  
+> **Locking**  
+> Is the process of strictly defining the project's dependencies in a lockfile.
+>
+> **Syncing**  
+> Is the process of installing all or a subset of dependencies from the lockfile into the project environment.
+> See: https://docs.astral.sh/uv/concepts/projects/sync/
+
+By using `uv run` the command automatically runs in the virtual environment. So it can access all the installed dependencies.
+You can also activate the virtual environment by your own.
+
+It is not recommended to modify the project environment manually, e.g., with `uv pip install`. For project dependencies, use `uv add` to add a package to the environment. For on-off requirements, use `uvx` or `uv run --with`.
+
+```shell
+# run the main.py inside the project environment
 uv run main.py
 
 # Using CPython 3.11.4 interpreter at: C:\Python311\python.exe
 # Creating virtual environment at: .venv
-Hello from task-manager-api!
+# Hello from task-manager-api!
 ```
 
 > [!NOTE]  
-> The pyproject.toml includes basic metadata.  
+> The _pyproject.toml_ includes basic metadata.  
 > It does not include a build system, it is not a package and it will not be installed into the environment.
 > See packaged applications: https://docs.astral.sh/uv/concepts/projects/init/#packaged-applications
 
 > [!NOTE]  
-> If you run the main.py for the first time and there is no virtual environment until now, then uv will create a virtual environment inside _.venv_ .
+> If you run the _main.py_ for the first time and there is no virtual environment until now, then uv will create a virtual environment inside _.venv_.
 
 You can also just create a _pyproject.toml_ file by using the `--bare` option (https://docs.astral.sh/uv/concepts/projects/init/#creating-a-minimal-project)
 
@@ -104,7 +126,7 @@ uv add "fastapi>=0.115.11"
 ```
 
 > [!WARNING]  
-> The locked version of the dependency will only change if necessary to satisfy the new constraints.
+> The locked version of the dependency (what is defined inside the lockfile) will only change if necessary to satisfy the new constraints.
 > To force the package version to update to the latest within the constraints, use `uv add "fastapi>=0.115.11" --upgrade-package fastapi`.  
 > See https://docs.astral.sh/uv/concepts/projects/dependencies/#changing-dependencies
 
