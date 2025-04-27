@@ -1,0 +1,3 @@
+- status codes: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+- RestAPI: https://restfulapi.net/resource-naming/
+- OpenAPI: https://swagger.io/resources/articles/how-to-build-an-api-from-the-ground-up/
