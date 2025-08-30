@@ -44,19 +44,25 @@ DDL (Data Definition Language): Create, Alter, Drop, Rename, Truncate, Comment
 DQL (Data Query Language): Select
 DML (Data Manipulation Language): Insert, Update, Delete, Merge, Call, Explain Plan, Lock Table
 
-# Functions
+# Simple SQL
 
-Aggregate functions = Operate on many records to produce 1 value (e.g. SUM to get total amount of salaries, AVG, COUNT, MIN, MAX, SUM)
+## Functions
+
+**Aggregate functions**
+
+Operate on many records to produce 1 value (e.g. `SUM` to get total amount of salaries, `AVG, COUNT, MIN, MAX, SUM`).
 
 https://www.postgresql.org/docs/16/functions-aggregate.html
 
-Scalar function = Operate on each record independently (e.g. CONCAT)
+**Scalar function**
 
-# Order of operations
+Operate on each record independently (e.g. `CONCAT`).
+
+## Order of operations
 
 FROM -> WHERE -> SELECT
 
-# Operator precedence
+## Operator precedence
 
 A statement having multiple operators is evaluated based on the priority of operators.
 
@@ -66,7 +72,7 @@ If operators have equal precedence then the operators are evaluated directionall
 
 https://www.postgresql.org/docs/12/sql-syntax-lexical.html#SQL-PRECEDENCE
 
-# Null values
+## Null values
 
 A record that does not have a value is considerd empty.
 SELECT NULL = NULL -- NULL
@@ -83,7 +89,8 @@ SELECT * FROM test WHERE name IS NOT NULL;
 
 ## COALESCE
 
-Returns the first non NULL vaue in the list
+Returns the first non `NULL` vaue in the list.
+
 `SELECT sum(COALESCE(age, 10)) FROM studens;`
 
 ## 3 value logic
@@ -93,7 +100,7 @@ True, False, NULL (unknown)
 
 Be always aware of NULL because it can lead to weird calculations.
 
-# BETWEEN
+## BETWEEN
 
 ```sql
 SELECT * FROM table WHERE <column> BETWEEN X AND Y;
@@ -102,31 +109,28 @@ Same as:
 SELECT * FROM table WHERE <column> > X AND <column> < Y;
 ```
 
-# IN
+## IN
 
 ```sql
 SELECT * FROM table WHERE <column> in (<value1>, <value2>)
 ```
 
-# Partial lookups / Pattern matching (LIKE)
+## Partial lookups / Pattern matching
 
-Postgres only does the LIKE operation on TEXT. Therefore we have to CAST.
+### LIKE
+
+Postgres only does the `LIKE` operation on `TEXT`. Therefore we have to `CAST` (e.g. `CAST(salary AS TEXT)` or `salary::TEXT`) the column to `TEXT`.
+
 Pattern wildcards:
 
-- '%' -> any number of characters
-- '\_' -> one character
-  Starts with M -> 'M%'
+- '%' -> any number of characters (e.g. Everything that starts with M -> `'M%'`)
+- '\_' -> one character (e.g. Everything that starts with M and has three characters -> `'M__'`)
 
-# ILIKE
+### ILIKE
 
-Case insensitive pattern matching
+Case insensitive pattern matching.
 
-# CAST
-
-CAST(salary AS TEXT)
-salary::TEXT
-
-# Date time
+## Date time
 
 ```sql
 SHOW TIMEZONE;
@@ -154,7 +158,7 @@ INSERT INTO timezones VALUES (
 SELECT * FROM timezones;
 ```
 
-# DATE functions
+## DATE functions
 
 ```sql
 SELECT NOW(); -- 2025-07-15 19:23:36.066427+00
@@ -183,7 +187,7 @@ WHERE hire_date <= NOW() - INTERVAL '30 years';
 -- Also usable with Months, Weeks, Days, Hours, Minutes
 ```
 
-Excercises
+## Excercises
 
 ```sql
 -- Get employees above 60
@@ -199,7 +203,7 @@ SELECT * FROM employees
 WHERE DATE_TRUNC('month', birth_date) = DATE '1964-01-01'
 ```
 
-# Remove duplicates
+## Remove duplicates
 
 DISTINCT clause keeps one row for each group of duplicates
 
@@ -224,7 +228,10 @@ Could be replaced with a SELECT plus WHERE condition but that is not efficient.
 
 #### Left (outer) join
 
-Left joins add the data that do not have a match from the left table (table insid the FROM clause).
+A LEFT JOIN returns all the records from the left table (table inside the `FROM` clause), and the matching records from the right table. If there is no match in the right table, you still get the left table’s row, but with `NULL` values for the right table’s columns.
+
+Think of it:
+“I want everything I have in my left table, and if I can find a match in the right table, include that too. If there’s no match, I still keep the left table’s data.”
 
 Example in the tutorial: Get all employees which are not managers.
 
