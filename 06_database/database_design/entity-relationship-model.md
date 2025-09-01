@@ -38,12 +38,50 @@ The information entities will store.
 - Single / multivalued (phone nr)
 - Keys
 
+> [!NOTE]  
+> **Hands on example by _Zero-to-mastery_**
+>
+> **School:**
+> school_id, street_name, street_nr, postal_code, state_city  
+> **instructor**:
+> teacher_id, first_name, last_name, date_of_birth, hiring_date, school_id  
+> **student**:
+> student_id, first_name, last_name, date_of_birth, school_id  
+> **exam**:
+> student_id, teacher_id, date_taken, passed, lesson_id  
+> **lesson**:
+> lesson_id, date_of_enrollment, package, student_id
+
 ## Terminologies
 
-### Relation schema
+**Relation schema**
 
 Defines the structure of a table (e.g. a USER table has id, first_name, last_name as columns).
 
-### Relation instance
+**Relation instance**
 
 Is the set of data that relates to the relation schema. Referring to all of the tuples / rows / data inside of the table.
+
+**Relation key**
+Uniquely identify each row in a table. Which is needed when you want to create relationships between tables.
+
+**Super key**
+Any combination of attributes that uniquely identify a row.
+
+**Candidate key**
+The minimal amount of attributes needed to uniquely identify a row.
+
+**Primary key**
+Practical implementation of a candidate key and a relation key that uniquely identifies the relationship.
+
+**Foreign key**
+References the primary key of another table in order to create a relationship between two tables. The foreign key can only take values of the primary key of the related table.
+
+**Compound key**
+Uniquely identify rows by using foreign key.
+
+**Composite key**
+Uniquely identify rows without using foreign key.
+
+**Surrogate key**
+Defining a separate column that uniquely identifies the row without using an existing row(s).
