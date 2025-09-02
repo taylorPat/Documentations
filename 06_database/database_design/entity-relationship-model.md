@@ -102,13 +102,13 @@ Is dependent or independent on other entity
 <span style="color: red;">Relationship</span>
 <span style="color: blue;">Constraint</span>
 
-![alt text](image-1.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">more</span>
+![alt text](/06_database/database_design/entity-relationship-model-assets/relationships/image-1.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">more</span>
 
-![alt text](image-2.png) <span style="color: red;">one (=must)</span> or <span style="color: blue;">more</span>
+![alt text](/06_database/database_design/entity-relationship-model-assets/relationships/image-2.png) <span style="color: red;">one (=must)</span> or <span style="color: blue;">more</span>
 
-![alt text](image-3.png) <span style="color: red;">one (= must)</span> and <span style="color: blue;">only one</span>
+![alt text](/06_database/database_design/entity-relationship-model-assets/relationships/image-3.png) <span style="color: red;">one (= must)</span> and <span style="color: blue;">only one</span>
 
-![alt text](image-4.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">one</span>
+![alt text](/06_database/database_design/entity-relationship-model-assets/relationships/image-4.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">one</span>
 
 > [!NOTE]  
 > **Hands on example by _Zero-to-mastery_**
@@ -180,6 +180,6 @@ Check the attributes in the ER-model inside the relationship chapter.
 
 > [!WARNING]
 >
-> We have a many:many relationship in our ER-model, because one painting can belong to zero or more rervations and one reservation can include one or multiple paintings.
+> We have a _many:many_ relationship in our ER-model, because one painting can belong to zero or more reservations and one reservation can include one or multiple paintings.
 
 ![erm-example-entities](/06_database/database_design/entity-relationship-model-assets/erm-example-relations-resolved.drawio.svg)
