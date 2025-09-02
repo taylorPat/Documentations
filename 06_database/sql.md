@@ -321,7 +321,9 @@ Collects all the different combinations for your GROUPING SETS.
 
 ## Window function
 
-Window functions create a new column based on functions performed on a subset or "window" of the data.
+https://www.postgresql.org/docs/16/tutorial-window.html
+
+Window functions create a new column based on functions performed on a subset or "window" of the data. Row retrain their separate identifiers.
 
 The window function applies against filters, but does not for LIMITS.
 
