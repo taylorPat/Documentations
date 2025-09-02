@@ -34,7 +34,7 @@ In the context of an entity-relationship (ER) model, requirements are translated
 The information entities will store.
 
 - Must be a property of the entity
-- Must be atomic (can only hold a single value, e.g. address is not atomic)
+- Must be atomic, must be broken down to its most useful level of detail (can only hold a single value, e.g. address is not atomic)
 - Single / multivalued (phone nr)
 - Keys
 
@@ -85,3 +85,61 @@ Uniquely identify rows without using foreign key.
 
 **Surrogate key**
 Defining a separate column that uniquely identifies the row without using an existing row(s).
+
+## Relationship
+
+Tables are linked by primary key and foreign key.
+
+From conceptional level:
+A relationship links two entities togethere.
+It as a parent entity and a child entity (one entity is driving the relationshipt towards the other entity).
+Has a cardinality (1:1, 1:many, many:many)
+Has modality, does it have to have a value in the relationship or not? (null, not null)
+Is dependent or independent on other entity
+
+### Crowsfeet
+
+<span style="color: red;">Relationship</span>
+<span style="color: blue;">Constraint</span>
+
+![alt text](image-1.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">more</span>
+
+![alt text](image-2.png) <span style="color: red;">one (=must)</span> or <span style="color: blue;">more</span>
+
+![alt text](image-3.png) <span style="color: red;">one (= must)</span> and <span style="color: blue;">only one</span>
+
+![alt text](image-4.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">one</span>
+
+> [!NOTE]  
+> **Hands on example by _Zero-to-mastery_**
+>
+> ![alt text](/06_database/database_design/entity-relationship-model-assets/entity-relationships.drawio.svg)
+
+### Many to many
+
+As a rule of thumb always try to resolve a many:many.
+
+Many:many relationships can be solved by intermediate tables.
+
+A good example is a relationship between author and book. One book can have multiple authors and one author can have multiple books.
+
+If you do not resolve this many:many relationship you would end up adding a column for every author to books table and vice verse you would add a new column for every book a author writes.
+
+Solution: Intermediate book-author entity which defines the relationship between one book and one author.
+
+> [!IMPORTANT]  
+> For the **Hands on example** the _lesson_ is an intermediate entity that resolved a many:many relationship between student and instructor.
+
+## Subject areas
+
+Divide entities into logical groups that are related. This gives you the opportunity to separate the requirements in individual buckets. Plus you can split up the groups in different teams.
+
+Rules:
+
+- All entities must belong to one area
+- An entity can only belong to one area
+- Nested areas are allowed
+
+> [!NOTE]
+>
+> **Hands on example by _Zero-to-mastery_** > ![alt text](/06_database/database_design/entity-relationship-model-assets/entity-subject-areas.drawio.svg)
