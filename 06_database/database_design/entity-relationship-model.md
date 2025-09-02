@@ -2,7 +2,7 @@
 
 A model that functions as a high level requirements document with a structure that can be understood and communicated by different people.
 
-## Requirment
+## 1. Requirment
 
 Requirements are the needs and expectations of stakeholders that define what a system must accomplish.
 
@@ -17,7 +17,7 @@ In the context of an entity-relationship (ER) model, requirements are translated
 > 4. There is an optional exam at the end of your lessons.
 > 5. You can only take the exam twice. If you fail twice you must take more lessons.
 
-## Entity
+## 2. Entity
 
 - A person, place or thing
 - Has a singular name
@@ -29,7 +29,7 @@ In the context of an entity-relationship (ER) model, requirements are translated
 >
 > ![entities](/06_database/database_design/entity-relationship-model-assets/driveme_entities.drawio.svg "Entities")
 
-## Attribute
+## 3. Attribute
 
 The information entities will store.
 
@@ -86,7 +86,7 @@ Uniquely identify rows without using foreign key.
 **Surrogate key**
 Defining a separate column that uniquely identifies the row without using an existing row(s).
 
-## Relationship
+## 4. Relationship
 
 Tables are linked by primary key and foreign key.
 
@@ -130,7 +130,7 @@ Solution: Intermediate book-author entity which defines the relationship between
 > [!IMPORTANT]  
 > For the **Hands on example** the _lesson_ is an intermediate entity that resolved a many:many relationship between student and instructor.
 
-## Subject areas
+## 5. Subject areas
 
 Divide entities into logical groups that are related. This gives you the opportunity to separate the requirements in individual buckets. Plus you can split up the groups in different teams.
 
@@ -143,3 +143,43 @@ Rules:
 > [!NOTE]
 >
 > **Hands on example by _Zero-to-mastery_** > ![alt text](/06_database/database_design/entity-relationship-model-assets/entity-subject-areas.drawio.svg)
+
+# Hands on exercise: Paintings
+
+A rich business man has tons of paintings.  
+He wants to build a system to catalog and track where his art is.  
+He lends the art to museums all across the world.  
+He even wants to see reservations.
+
+Constraints:
+
+- A painting can only have one artist
+
+## 1. Defining the requirements
+
+**What is the goal of the system?**
+
+The goal of the system is to list a sequence of paintings (catalog), get to know the location (track) of those. Museums have the possibility to make reservations.
+
+**Who are the stakeholders?**
+
+- Rich business man (Owner) -> Will be moved to Artist for this example
+- Museums
+
+## 2. Defining entities
+
+![erm-example-entities](/06_database/database_design/entity-relationship-model-assets/erm-example-entities.drawio.svg)
+
+## 3. Defining attributes
+
+Check the attributes in the ER-model inside the relationship chapter.
+
+## 4. Defining relationships
+
+![erm-example-entities](/06_database/database_design/entity-relationship-model-assets/erm-example-relations.drawio.svg)
+
+> [!WARNING]
+>
+> We have a many:many relationship in our ER-model, because one painting can belong to zero or more rervations and one reservation can include one or multiple paintings.
+
+![erm-example-entities](/06_database/database_design/entity-relationship-model-assets/erm-example-relations-resolved.drawio.svg)
