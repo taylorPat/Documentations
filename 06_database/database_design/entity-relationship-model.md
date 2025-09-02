@@ -99,8 +99,8 @@ Is dependent or independent on other entity
 
 ### Crowsfeet
 
-<span style="color: red;">Relationship</span>
-<span style="color: blue;">Constraint</span>
+<span style="color: blue;">Relationship</span>
+<span style="color: red;">Constraint</span>
 
 ![alt text](/06_database/database_design/entity-relationship-model-assets/relationships/image-1.png) <span style="color: red;">zero (= optional)</span> or <span style="color: blue;">more</span>
 
