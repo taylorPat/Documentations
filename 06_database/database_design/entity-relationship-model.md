@@ -1,4 +1,4 @@
-# Entity-Relationship-Model
+# Top-Down: Entity-Relationship-Model
 
 A model that functions as a high level requirements document with a structure that can be understood and communicated by different people.
 
@@ -183,3 +183,35 @@ Check the attributes in the ER-model inside the relationship chapter.
 > We have a _many:many_ relationship in our ER-model, because one painting can belong to zero or more reservations and one reservation can include one or multiple paintings.
 
 ![erm-example-entities](/06_database/database_design/entity-relationship-model-assets/erm-example-relations-resolved.drawio.svg)
+
+# Bottom-up: Normalization
+
+## Why normalization?
+
+## What are anomalies?
+
+## What are the prerequisites for Normalization?
+
+- Functional dependency (Describe the relationship between two attributes of an entity. If the value of an attribute B (student name) can be derived by attribute A (student), then B (Dependant) is functional dependent on A (Determant))
+- Normal forms
+
+## Normal forms
+
+### 0 NF
+
+Data is in 0 NF when it is unnormalized:
+
+- Repeating groups of fields (e.g. multiple columns for authors of a book)
+- Positional dependence of data (e.g. it should not wether in what way you store the data, it should just be important that data is stored)
+- Non-atomic data (e.g. multiple values inside a column)
+
+### From 0 NF to 1 NF
+
+- Eliminate repeating groups of same data
+- Each attribute should contain a single value
+- Determine Primary Key
+
+### From 1 NF to 2 NF
+
+- It is in 1 NF
+- All non key attributes are fully functional dependent on the primary key
