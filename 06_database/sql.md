@@ -1,4 +1,6 @@
-# Imperative vs. declarative
+# Structured Query Language (SQL)
+
+## Imperative vs. declarative
 
 Declarative = What will happen?
 
@@ -8,15 +10,15 @@ Imperative = How it will happen?
 
 Line by line instructions. Example: Java
 
-# Database
+## Database
 
 = A structured set of data in a way to scale with organisations that have massive amount of data.
 
-# Model
+## Model
 
 = A structure for the data. So it is a way of how to store and organize your data.
 
-# DBMS
+## DBMS
 
 = Manages and organizes data inside your db following the model. You can use SQL to get / manipulate data and the DBMS will get / manipulate the data in a save and secure way.
 
@@ -27,7 +29,7 @@ Line by line instructions. Example: Java
 E.g.: MySQL, PostreSQL, Oracle
 Each having different features (data management, security, ... )
 
-# Relation model
+## Relation model
 
 Create relation between table.
 
@@ -35,18 +37,16 @@ Primary key is an unique identifier which can be used to create a link to other 
 
 In order to link data from different tables you define a foreign key which references a primary key of another table.
 
-# SQL
-
 ## SQL commands
 
-DCL (Data Control Language): Grant, Revoke
-DDL (Data Definition Language): Create, Alter, Drop, Rename, Truncate, Comment
-DQL (Data Query Language): Select
-DML (Data Manipulation Language): Insert, Update, Delete, Merge, Call, Explain Plan, Lock Table
+- DCL (Data Control Language): Grant, Revoke
+- DDL (Data Definition Language): Create, Alter, Drop, Rename, Truncate, Comment
+- DQL (Data Query Language): Select
+- DML (Data Manipulation Language): Insert, Update, Delete, Merge, Call, Explain Plan, Lock Table
 
-# Simple SQL
+## Simple SQL
 
-## Functions
+### Functions
 
 **Aggregate functions**
 
@@ -58,11 +58,11 @@ https://www.postgresql.org/docs/16/functions-aggregate.html
 
 Operate on each record independently (e.g. `CONCAT`).
 
-## Order of operations
+### Order of operations
 
 FROM -> WHERE -> SELECT
 
-## Operator precedence
+### Operator precedence
 
 A statement having multiple operators is evaluated based on the priority of operators.
 
@@ -72,7 +72,7 @@ If operators have equal precedence then the operators are evaluated directionall
 
 https://www.postgresql.org/docs/12/sql-syntax-lexical.html#SQL-PRECEDENCE
 
-## Null values
+### Null values
 
 A record that does not have a value is considerd empty.
 SELECT NULL = NULL -- NULL
@@ -87,20 +87,20 @@ SELECT * FROM test WHERE name != NULL;
 SELECT * FROM test WHERE name IS NOT NULL;
 ```
 
-## COALESCE
+### COALESCE
 
 Returns the first non `NULL` vaue in the list.
 
 `SELECT sum(COALESCE(age, 10)) FROM studens;`
 
-## 3 value logic
+### 3 value logic
 
 SQL is different from other SQL statements in a way that it has three value logic system:
 True, False, NULL (unknown)
 
 Be always aware of NULL because it can lead to weird calculations.
 
-## BETWEEN
+### BETWEEN
 
 ```sql
 SELECT * FROM table WHERE <column> BETWEEN X AND Y;
@@ -109,13 +109,13 @@ Same as:
 SELECT * FROM table WHERE <column> > X AND <column> < Y;
 ```
 
-## IN
+### IN
 
 ```sql
 SELECT * FROM table WHERE <column> in (<value1>, <value2>)
 ```
 
-## Partial lookups / Pattern matching
+### Partial lookups / Pattern matching
 
 ### LIKE
 
@@ -126,11 +126,11 @@ Pattern wildcards:
 - '%' -> any number of characters (e.g. Everything that starts with M -> `'M%'`)
 - '\_' -> one character (e.g. Everything that starts with M and has three characters -> `'M__'`)
 
-### ILIKE
+#### ILIKE
 
 Case insensitive pattern matching.
 
-## Date time
+### Date time
 
 ```sql
 SHOW TIMEZONE;
@@ -158,7 +158,7 @@ INSERT INTO timezones VALUES (
 SELECT * FROM timezones;
 ```
 
-## DATE functions
+### DATE functions
 
 ```sql
 SELECT NOW(); -- 2025-07-15 19:23:36.066427+00
@@ -187,7 +187,7 @@ WHERE hire_date <= NOW() - INTERVAL '30 years';
 -- Also usable with Months, Weeks, Days, Hours, Minutes
 ```
 
-## Excercises
+#### Excercises
 
 ```sql
 -- Get employees above 60
@@ -203,7 +203,7 @@ SELECT * FROM employees
 WHERE DATE_TRUNC('month', birth_date) = DATE '1964-01-01'
 ```
 
-## Remove duplicates
+### Remove duplicates
 
 DISTINCT clause keeps one row for each group of duplicates
 
@@ -212,19 +212,17 @@ DISTINCT clause keeps one row for each group of duplicates
 SELECT DISTINCT(title) FROM titles
 ```
 
-## Join
+### Join
 
 A join combines columns from one table with those of another table based on a common column. (Most common approach: Link primary key to foreign key)
 
 Joining data works as a filter and there are different ways of joining tables.
 
-### Inner Join
+#### Inner Join
 
 Data is joined when both / multiple tables have the same row value for the joined column. Each row resulting in a match will be shown in the results.
 
 Could be replaced with a SELECT plus WHERE condition but that is not efficient.
-
-### Outer Join
 
 #### Left (outer) join
 
@@ -241,9 +239,9 @@ Solution: Make a left join on employees and manager table and select all employe
 
 Is the opposite / inverse of Left join.
 
-# Advanced SQL
+## Advanced SQL
 
-## Group By
+### Group By
 
 Summarizing or aggregating data by groups.
 
@@ -256,7 +254,7 @@ Split = Divide into Groups with values
 Apply = Apply Aggregate against ungrouped columns
 Combine = Combines Groups with a single value into single value
 
-## Where vs. Having
+### Where vs. Having
 
 Where applies filters to individual rows
 Having applies filters to a group as a whole
@@ -276,7 +274,7 @@ GROUP BY first_name, last_name
 ORDER BY job_count DESC
 ```
 
-## Grouping Sets
+### Grouping Sets
 
 Grouping is a subclass of GROUP BY that allows you to define multiple groupings.
 
@@ -315,11 +313,11 @@ GROUP BY
 ORDER BY employees_per_dep DESC
 ```
 
-## ROLL UP
+### ROLL UP
 
 Collects all the different combinations for your GROUPING SETS.
 
-## Window function
+### Window function
 
 https://www.postgresql.org/docs/16/tutorial-window.html
 
@@ -451,7 +449,7 @@ FROM country
 ORDER BY relative_population DESC
 ```
 
-## Conditional statement
+### Conditional statement
 
 Each return value must be a single value.
 
@@ -475,7 +473,7 @@ SELECT
 FROM products
 ```
 
-## NULLIF
+### NULLIF
 
 Return null if a condition is met.
 
@@ -490,7 +488,7 @@ SELECT prod_id, title, price, NULLIF(special, 0) as "special"
 FROM products
 ```
 
-## Views
+### Views
 
 Views allow you to store and query previously run queries.
 Views are the output of the query we ran.
@@ -538,7 +536,7 @@ SELECT DISTINCT(emp_no) FROM salaries
 WHERE salary > 80000
 ```
 
-## Indexes
+### Indexes
 
 An index is a construct to improve query performance.
 
@@ -548,7 +546,7 @@ Speed up data query.
 
 Slows down data insertion and updates.
 
-### Types of indexes
+#### Types of indexes
 
 - single column (retrieving data that satisfies ONE condition)
 - multi column (retrieving data that satisfies MULTIPLE conditions)
@@ -569,27 +567,27 @@ USING <method>;
 DROP INDEX <name>
 ```
 
-### When to use:
+#### When to use:
 
 - Index foreign keys
 - Index primary keys and unique columns
 - Index on columns that end up in the ORDER BY / WHERE clause often
 
-### When **not** to use:
+#### When **not** to use:
 
 - on small tables
 - on frequently updated tables
 - on columns that can contain null values
 - on columns that have large values (e.g. comments, json)
 
-### Index algorithms
+#### Index algorithms
 
 - b-tree: default algorithm, best used for comparisons with <, <=, =, >=, BETWEEN, IN, IS (NOT) NULL
 - hash: can only compare equality (=) operations
 - gin: generalized inverted index, best used when multiple values are stored in a singled field (arrays)
 - gist: generalized search tree, useful in indexing geometric data and full text search
 
-## Subqueries
+### Subqueries
 
 A construct that allows you to build extremly complex queries.
 
@@ -615,7 +613,7 @@ Innser query must return a single record when used inside SELECT, WHERE, HAVING.
 **Correlated Subquery**
 You can reference from outside to inside means you can use the data of the outside query in the inside query. It is called correlated because without the parent (outer) query the inner query cannot exist.
 
-### How does it differ from joins?
+#### How does it differ from joins?
 
 - Subqueries are queries that can stand alone
 - Can return a single result or row set
@@ -660,11 +658,55 @@ WHERE o.customerid IN (
 )
 ```
 
-# DDL (Data Definition Language)
+## Transactions
+
+A database is a shared resource which multiple users can interact with at the same time.
+
+How do we make sure that the database and its data stays consistent while it is concurrently used by different users.
+
+A transaction is a unit of instructions (e.g. query) and this unit runs in isolation without affecting the database until the unit's run has finished.
+
+In order to maintain integrity of a database, all transactions must obey _ACID_ properties.
+
+## ACID
+
+**ATOMITY** Either execute entirely or not at all.  
+**CONSITENCY** Each transaction should leave the database in a consisten state (either `COMMIT` or `ROLLBACK`).  
+**ISOLATION** Transactions should be executed in isolation from other transactions (What happening in session A is not known in session B (which have been started at the same time) until the time of `COMMIT` or `ROLLBACK` and then the DBMS checks if the transactions are valid and if not `ROLLBACK` one of them).  
+**DURABILITY** After completion of a transaction the data is persisted
+
+## Hands on
+
+```sql
+-- Beginn transaction (session 1)
+BEGINN;
+-- BEGIN
+-- Delete data (session 1)
+DELETE FROM employees WHERE emp_no BETWEEN 10000 AND 10005;
+-- DELETE 5
+-- Partially commited state
+-- that menas that only in this session the data has been deleted
+-- if you connect from another session to the db you would still
+-- see all employees
+
+-- Delete data (session 2)
+DELETE FROM employees WHERE emp_no BETWEEN 10000 AND 10005;
+-- Nothing happens, you do not see any output like in session 1
+-- session 2 is locked until the session 1 is finished
+
+-- session 1
+ROLLBACK;
+-- session 2
+-- DELETE 5 (immidiately after session 1 rollbacked)
+END;
+-- COMMIT
+```
+
+## Data Definition Language (DDL)
 
 Commands to create, modify, delete different structures (e.g. database, table, roles).
 
-## Types of Databases
+### Types of Databases
 
 Regular: Normal database that we are used to use.
 Template: A blueprint which can be used for creating regular databases with predefined structure.
@@ -680,7 +722,7 @@ CREATE DATABASE <db_name>
 - To organize tables into logical groups to make them manageable
 - Third party apps can be put into separate schemas so they do not collide with the names of other objects
 
-## Roles in PostgreSQL
+### Roles in PostgreSQL
 
 Roles determine what is allowed.
 
@@ -722,7 +764,7 @@ Show files which define the postgresql internals for login and interaction.
 `>>>  show hba_file;` defines if you have to use password when you login via psql (e.g. trust)
 `>>> show config_file;` define if encryption is on and what method is used for login
 
-## Privileges
+### Privileges
 
 Attributes can only define so many privileges.
 
@@ -767,18 +809,18 @@ REVOKE employee_read FROM privilegetest;
 -- REVOKE ROLE
 ```
 
-## Data types
+### Data types
 
 The data type is a constraint for a column to allow only specific type of data to be filled in.
 
 It is important for the system to specify a type because it tells the system how it can / should handle the data in that column (e.g. selecting a proper index strategy).
 If you store everything in text you could also use a excel sheet.
 
-### Boolean
+#### Boolean
 
 True (1, yes, y, t, true), False (0, no, f, flase), Null
 
-### Character / text
+#### Character / text
 
 PostgreSQL provides 3 types of character data:
 
@@ -786,7 +828,7 @@ PostgreSQL provides 3 types of character data:
 - VARCHAR(N) -> Variable length without space padding,
 - TEXT() -> Unlimited length text
 
-### Numeric
+#### Numeric
 
 PostgreSQL has three INTEGERS (number that is not a fraction) types:
 
@@ -800,7 +842,7 @@ and a floating point (number that has a decimal point):
 - FLOAT8 -> 15 Digits (it is precise up to the 15th character and the 16th is rounded)
 - DECIMAL / NUMERIC -> up to 131072 digits before the decimal point and up to 16383 digits after the decimal point
 
-### Arrays
+#### Arrays
 
 A group of elements of the same type.
 
@@ -818,14 +860,14 @@ INSERT INTO test VALUES (
 )
 ```
 
-## Naming conventions
+### Naming conventions
 
 - Table names must be singular
 - Columns must be lowercase with underscore
 - Columns with mixed case are acceptable (e.g. studentID)
 - Columns with uppercase are NOT acceptable
 
-## Create table
+### Create table
 
 ```sql
 -- Create extension for using uuid_generate_v4
@@ -843,7 +885,7 @@ date_of_birth DATE NOT NULL
 -- \d student
 ```
 
-### Column constraints
+#### Column constraints
 
 - NOT NULL
 - PRIMARY KEY
@@ -851,7 +893,7 @@ date_of_birth DATE NOT NULL
 - CHECK (Apply a special condition to check against the values in the columns)
 - REFERENCES (Constrain the values of the column to only be values that exist in the column of another table (FOREIGN KEY))
 
-### Table constraints
+#### Table constraints
 
 Is not tied to a particular column and it can encompass more than one column.
 
@@ -865,7 +907,7 @@ CONSTRAINT pk_student_id PRIMARY KEY (student_id)
 );
 ```
 
-### UUID
+#### UUID
 
 Universally unique identifier.
 
@@ -895,7 +937,7 @@ Cons:
 - Can have performance impact
 - More difficult to debug
 
-## Hands on: Creating a course
+### Hands on: Creating a course
 
 ```sql
 -- Custom data type
@@ -953,7 +995,7 @@ CREATE TABLE ENROLLMENT (
 );
 ```
 
-### Alter table
+#### Alter table
 
 A very powerful command which has a lot of things it can change:
 https://www.postgresql.org/docs/current/sql-altertable.html
@@ -963,7 +1005,7 @@ https://www.postgresql.org/docs/current/sql-altertable.html
 - Add and remove constraints
 - Change a column level constraint
 
-### Insert data
+#### Insert data
 
 ```sql
 SELECT * FROM student;
@@ -1004,7 +1046,7 @@ UPDATE course SET feedback = array_append(
 WHERE course_id = 'a36981e0-2fc5-4b08-ab96-6ba69f8e60f7';
 ```
 
-### Change custom feedback type to table
+#### Change custom feedback type to table
 
 ```sql
 -- Rename existing feedback
@@ -1021,32 +1063,32 @@ CREATE TABLE feedback (
 );
 ```
 
-## Back up
+### Back up
 
-### 1. What to backup?
+#### 1. What to backup?
 
 Full backup = back ups all the data -> frequency: less often
 Incremental backup = back ups since lase incremental -> frequency: often (daily, 2 days)
 Differential backup = back ups since last full backup -> frequency: often (depends on how much data is changing in your system)
 Transaction log = backup of the database transactions -> frequency: A lot (e.g. every 15th minute)
 
-### 2. Whats the appropriate way to back up?
+#### 2. Whats the appropriate way to back up?
 
 Are we back up at operating system, hardware level or just the database?
 
-### 3. How frequently are we goint to do a backup?
+#### 3. How frequently are we goint to do a backup?
 
 Daily, weekly, bi-weekly? Dependent on how volatile the data is.
 
-### 4. Decide where you are going to store data backups?
+#### 4. Decide where you are going to store data backups?
 
 Cloud provider or own severs (on-premise)
 
-### 5. have a retention policy for the backup
+#### 5. Have a retention policy for the backup
 
 How long to I need to store this data? (e.g. medical for example 10 years)
 
-## Back up in PostgreSQL
+### Back up in PostgreSQL
 
 (https://www.postgresql.org/docs/12/backup.html)
 
@@ -1061,7 +1103,7 @@ Tool: pgBackRest -> Backup and Restore tool (for differnt back up solution, not 
 
 We created the SQL dump as SQL file in Valentina studio.
 
-## Restoring in PostgreSQL
+### Restoring in PostgreSQL
 
 We restore the data by using psql
 
@@ -1075,9 +1117,9 @@ psql -d postgres
 \i <FILE_NAME>
 ```
 
-# Project
+## Project
 
-## Create database
+### Create database
 
 ```shell
 # psql -U postgres
@@ -1096,7 +1138,7 @@ CREATE DATABASE movr_employees;
 \i /project_data/9Ys9a7kFSfKK2rbPN1je_movr_employees.sql
 ```
 
-## Insert schema and data
+### Insert schema and data
 
 ```shell
 movr=# \i /project_data/MhohdFT4RIOmra3GWQ1k_schema.sql
@@ -1107,7 +1149,7 @@ CREATE INDEX
 # \dt -> promo_codes, rides, ...
 ```
 
-## Query data
+### Query data
 
 ```sql
 --  It was an inside job
