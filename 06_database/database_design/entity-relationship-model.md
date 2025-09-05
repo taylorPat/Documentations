@@ -215,3 +215,23 @@ Data is in 0 NF when it is unnormalized:
 
 - It is in 1 NF
 - All non key attributes are fully functional dependent on the primary key
+
+### From 2 to 3 NF
+
+- It is in 2 NF
+- No transitive dependencies
+
+**Transitive dependencies**
+If B is functional dependent on A (A -> B) and C is functional dependent on B (B -> C) then C is transitive dependent on A (A ~> C).
+
+### From 3 to 3.5 NF (Boyce-Codd NF)
+
+- It is in 3 NF
+- For any functional dependency (A -> B) A should be a super key
+
+3 NF allows attribute to be part of a Candidate key which is not the Primary key - BCNF does not.
+
+A relationship is not in BCNF:
+
+- the Primary Key is a composite key
+- there are multiple options for a candiate key
